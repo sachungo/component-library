@@ -1,0 +1,21 @@
+{
+  "name": "component_library",
+  "version": "1.0.0",
+  "description": "A component library built using storybook and react",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Stacey Achungo",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/react": "^4.1.11",
+    "babel-loader": "^8.0.5"
+  },
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  }
+}
