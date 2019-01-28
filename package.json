@@ -7,7 +7,11 @@
   "author": "Stacey Achungo",
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@storybook/addon-a11y": "^4.1.11",
     "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-console": "^1.1.0",
+    "@storybook/addon-knobs": "^4.1.11",
+    "@storybook/addon-storyshots": "^4.1.11",
     "@storybook/react": "^4.1.11",
     "babel-loader": "^8.0.5"
   },
