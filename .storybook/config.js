@@ -1,4 +1,8 @@
-import { configure } from '@storybook/react';
+import { configure, addDecorator } from '@storybook/react';
+
+import { checkA11y } from '@storybook/addon-a11y';
+
+addDecorator(checkA11y);
 
 /**
  * TODO: Dynamically load the stories using 'require.context` of webpack
