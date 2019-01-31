@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],[function(n,e,c){"use strict";function t(){console.log("I get called from print.js!")}c.r(e),document.body.appendChild(function(){const n=document.createElement("div");n.innerHTML="Testing Webpack setup......again";const e=document.createElement("button");return e.innerHTML="Click me and check the console! ;)",e.onclick=t,n.appendChild(e),n}())}],[[0,1]]]);
-//# sourceMappingURL=app.afc105ea9e12cabf0d51.bundle.js.map

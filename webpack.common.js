@@ -1,21 +1,33 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: 'Caching'
-    }),
-    new webpack.HashedModuleIdsPlugin()
+      template: 'src/index.html',
+      filename: 'index.html'
+    })
   ],
   output: {
-    filename: '[name].[contenthash].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader'
+      }
+    ]
+  },
+  /* Caching */
   optimization: {
     runtimeChunk: 'single',
     splitChunks: {

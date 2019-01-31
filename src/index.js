@@ -1,15 +1,10 @@
-import printMe from './print';
+import React from 'react';
+import { render } from 'react-dom';
 
-function testing() {
-  const element = document.createElement('div');
-  element.innerHTML = "Testing Webpack setup......again";
-
-  const btn = document.createElement('button');
-  btn.innerHTML = 'Click me and check the console! ;)';
-  btn.onclick = printMe;
-  element.appendChild(btn);
-
-  return element;
+const element = document.getElementById('app');
+if (element) {
+  render(
+    <div>Testing React setup...really?</div>,
+    document.getElementById('app')
+  );
 }
-
-document.body.appendChild(testing());
