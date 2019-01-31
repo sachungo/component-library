@@ -9,3 +9,6 @@ node_modules/
 
 # Ignore map files
 *.map
+
+# Temporarily ignore files in ./dist
+dist/

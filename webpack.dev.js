@@ -9,5 +9,5 @@ module.exports = merge(commonConfig, {
   },
   output: {
     filename: '[name].bundle.js'
-  },
+  }
 });
