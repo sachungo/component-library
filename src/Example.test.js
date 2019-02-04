@@ -7,6 +7,6 @@ describe('Example test', () => {
 
   it('renders the text', () => {
     const wrapper = shallow(<Example />);
-    expect(wrapper).toHaveText('Testing test setup');
+    expect(wrapper).toIncludeText('Testing test setup');
   });
 });
