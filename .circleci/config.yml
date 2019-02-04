@@ -9,8 +9,6 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:11
 
-    working_directory: ~/component-library
-
     steps:
       - checkout
 
@@ -44,7 +42,7 @@ jobs:
           command: |
             # run before-build command to notify code climate of a pending test report
             ./cc-test-reporter before-build
-            yarn test
+            yarn test:coverage
             # run after-build command to notify code climate of a completed test
             ./cc-test-reporter after-build --debug -t lcov --exit-code $?
 
