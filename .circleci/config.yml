@@ -44,7 +44,7 @@ jobs:
           command: |
             # run before-build command to notify code climate of a pending test report
             ./cc-test-reporter before-build
-            yarn test:coverage
+            yarn test
             # run after-build command to notify code climate of a completed test
             ./cc-test-reporter after-build --debug -t lcov --exit-code $?
 
