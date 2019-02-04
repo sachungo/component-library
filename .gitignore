@@ -12,3 +12,6 @@ node_modules/
 
 # Temporarily ignore files in ./dist
 dist/
+
+# Ignore any file with .rej extension which may be created when a commit is reset
+*.rej

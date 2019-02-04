@@ -14,12 +14,17 @@
     "es6": true,
     "jest": true
   },
+  "globals": {
+    "shallow": true
+  },
   "rules": {
     "prettier/prettier": ["error", {
       "singleQuote": true
     }],
     "react/jsx-filename-extension": [
       1, { "extensions": [".js", ".jsx"] }
-    ]
+    ],
+    "react/react-in-jsx-scope": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
