@@ -33,4 +33,4 @@ jobs:
        # run tests!
       - run:
           name: Execute tests with coverage
-          command: yarn test -- --coverage
+          command: yarn test:coverage
