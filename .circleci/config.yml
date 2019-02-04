@@ -9,7 +9,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:11
 
-    working_directory: ~/repo_source
+    working_directory: ~/component-library
 
     steps:
       - checkout
