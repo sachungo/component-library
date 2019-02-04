@@ -1,10 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
+import App from './App';
 
 const element = document.getElementById('app');
 if (element) {
-  render(
-    <div>Testing React setup...really?</div>,
-    document.getElementById('app')
-  );
+  render(<App />, document.getElementById('app'));
 }
