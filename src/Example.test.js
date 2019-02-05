@@ -1,3 +1,4 @@
+import React from 'react';
 import Example from './App';
 
 describe('Example test', () => {
