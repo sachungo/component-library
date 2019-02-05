@@ -8,7 +8,5 @@ module.exports = merge(commonConfig, {
   output: {
     filename: '[name].[contenthash].bundle.js'
   },
-  plugins: [
-    new webpack.HashedModuleIdsPlugin()
-  ]
+  plugins: [new webpack.HashedModuleIdsPlugin()]
 });

@@ -1,7 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ text = '', onClick, type = 'button' }) => (
+const Button = ({ text = '', onClick, type = 'button' }) => (
   <button onClick={onClick} type={type}>
     {text}
   </button>
 );
+
+Button.propTypes = {
+  text: PropTypes.string,
+  onClick: PropTypes.func,
+  type: PropTypes.string
+};
+
+export default Button;
