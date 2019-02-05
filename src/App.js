@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Button from './Button';
 
 export default class App extends Component {
-  handleClick = () => {
-    return 'clicking button';
-  };
+  handleClick = () => 'clicking button';
 
   render() {
     return (
