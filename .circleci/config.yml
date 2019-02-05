@@ -9,8 +9,6 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:11
 
-    working_directory: ~/repo_source
-
     steps:
       - checkout
 
@@ -25,16 +23,29 @@ jobs:
           name: Install packages
           command: yarn install
 
+      - run:
+          name: Setup Code Climate test-reporter
+          # | indicates there will be more than one shell command to run
+          command: |
+            # fetch the test-reporter pre-built binary and save the binary in cc-test-reporter file
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            # make cc-test-reporter executable
+            chmod +x ./cc-test-reporter
+
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-       # run tests!
+        # run tests!
       - run:
-          name: Execute tests with coverage
-          command: yarn test:coverage
-     
+          name: Execute tests and send report to code climate
+          command: |
+            # run before-build command to notify code climate of a pending test report
+            ./cc-test-reporter before-build
+            yarn test:coverage
+            # run after-build command to notify code climate of a completed test
+            ./cc-test-reporter after-build --debug -t lcov --exit-code $?
+
       - store_artifacts:
           path: test-output
       - store_test_results:

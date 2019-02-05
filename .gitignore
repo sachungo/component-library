@@ -3,3 +3,18 @@
 
 # dependency directories
 node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore map files
+*.map
+
+# Temporarily ignore files in ./dist
+dist/
+
+# Ignore any file with .rej extension which may be created when a commit is reset
+*.rej
+
+# Ignore the coverage folder
+coverage/
