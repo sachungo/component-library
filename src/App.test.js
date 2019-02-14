@@ -1,13 +1,13 @@
 import React from 'react';
-import Example from './App';
+import App from './App';
 
-describe('Example test', () => {
+describe('App test', () => {
   it('renders without exceptions', () => {
-    expect(() => shallow(<Example />)).not.toThrow();
+    expect(() => shallow(<App />)).not.toThrow();
   });
 
   it('renders the text', () => {
-    const wrapper = shallow(<Example />);
+    const wrapper = shallow(<App />);
     expect(wrapper).toIncludeText('Testing test setup');
   });
 });

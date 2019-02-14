@@ -46,4 +46,4 @@ jobs:
             ./temp/cc-test-reporter before-build
             yarn test:coverage
             # run after-build command to notify code climate of a completed test
-            ./temp/cc-test-reporter after-build --debug -t lcov --exit-code $?
+            ./temp/cc-test-reporter after-build --debug -t lcov -o coverage/lcov.info --exit-code $?
