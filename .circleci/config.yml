@@ -5,12 +5,22 @@
 version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: a4337e319d2237a12aaf50fdbf8ec84b2dc06177859447f960d8eed35312256f
     docker:
       # specify the version you desire here
       - image: circleci/node:11
+    working_directory: ~/library
 
     steps:
       - checkout
+      - run:
+          name: Setup Code Climate test-reporter
+          # | indicates there will be more than one shell command to run
+          command: |
+            # fetch the test-reporter pre-built binary and save the binary in cc-test-reporter file
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./library/cc-test-reporter
+            chmod +x ./library/cc-test-reporter
 
       # Download and cache dependencies
       - restore_cache:
@@ -23,30 +33,16 @@ jobs:
           name: Install packages
           command: yarn install
 
-      - run:
-          name: Setup Code Climate test-reporter
-          # | indicates there will be more than one shell command to run
-          command: |
-            # fetch the test-reporter pre-built binary and save the binary in cc-test-reporter file
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            # make cc-test-reporter executable
-            chmod +x ./cc-test-reporter
-
       - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-        # run tests!
+
       - run:
           name: Execute tests and send report to code climate
           command: |
             # run before-build command to notify code climate of a pending test report
-            ./cc-test-reporter before-build
+            ./library/cc-test-reporter before-build
             yarn test:coverage
             # run after-build command to notify code climate of a completed test
-            ./cc-test-reporter after-build --debug -t lcov --exit-code $?
-
-      - store_artifacts:
-          path: test-output
-      - store_test_results:
-          path: test-output
+            ./library/cc-test-reporter after-build --debug -t lcov --exit-code $?

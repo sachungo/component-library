@@ -7,5 +7,6 @@ module.exports = {
   ],
   roots: ["<rootDir>/src"],
   setupFiles: ["<rootDir>/enzyme.config.js"],
-  setupFilesAfterEnv: ["<rootDir>/node_modules/jest-enzyme/lib/index.js"]
+  setupFilesAfterEnv: ["<rootDir>/node_modules/jest-enzyme/lib/index.js"],
+  coverageReporters: ["lcov"]
 };
