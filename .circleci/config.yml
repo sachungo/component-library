@@ -18,9 +18,10 @@ jobs:
           name: Setup Code Climate test-reporter
           # | indicates there will be more than one shell command to run
           command: |
+            mkdir -p temp/
             # fetch the test-reporter pre-built binary and save the binary in cc-test-reporter file
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./library/cc-test-reporter
-            chmod +x ./library/cc-test-reporter
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./temp/cc-test-reporter
+            chmod +x ./temp/cc-test-reporter
 
       # Download and cache dependencies
       - restore_cache:
@@ -42,7 +43,7 @@ jobs:
           name: Execute tests and send report to code climate
           command: |
             # run before-build command to notify code climate of a pending test report
-            ./library/cc-test-reporter before-build
+            ./temp/cc-test-reporter before-build
             yarn test:coverage
             # run after-build command to notify code climate of a completed test
-            ./library/cc-test-reporter after-build --debug -t lcov --exit-code $?
+            ./temp/cc-test-reporter after-build --debug -t lcov --exit-code $?
